@@ -1,0 +1,1207 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coretax DJP - E-Omzet Prototype</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== 1. TOP HEADER BAR ========== -->
+    <header class="header">
+        <div class="header-logo">
+            <!-- Logos Kemenkeu & DJP -->
+            <img src="img/kemenkeu_djp_dark.png" alt="Kemenkeu & DJP" class="logo-img logo-kemenkeu-djp dark-logo">
+            <img src="img/kemenkeu_djp_light.png" alt="Kemenkeu & DJP" class="logo-img logo-kemenkeu-djp light-logo">
+            
+            <!-- Logo CORETAX + Prototype Badge -->
+            <div class="coretax-brand">
+                <img src="img/coretax_dark.png" alt="CORETAX" class="logo-img logo-coretax dark-logo">
+                <img src="img/coretax_light.png" alt="CORETAX" class="logo-img logo-coretax light-logo">
+                <div class="coretax-prototype">PROTOTYPE</div>
+            </div>
+        </div>
+        
+        <div class="header-search">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchBar" class="search-input" placeholder="Cari layanan..." aria-label="Cari layanan" readonly>
+            <div class="kbd-badge">Ctrl <span style="margin-left: 2px;">K</span></div>
+        </div>
+        
+        <div class="header-actions">
+            <div class="icon-buttons">
+                <!-- Bantuan / Chat -->
+                <button class="icon-btn" aria-label="Bantuan" title="Bantuan"><i class="fa-regular fa-comment-dots"></i></button>
+                <!-- Mode Terang / Gelap Toggle -->
+                <button class="icon-btn" id="themeToggle" aria-label="Ubah Tema" title="Ubah Tema"><i class="fa-solid fa-moon"></i></button>
+                <!-- Notifikasi -->
+                <button class="icon-btn dropdown notification-btn" aria-label="Notifikasi" title="Notifikasi">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notif-badge">3</span>
+                    <div class="dropdown-menu notification-dropdown">
+                        <div class="dropdown-header">Notifikasi Saya</div>
+                        <div class="dropdown-item notif-item">
+                            <div class="notif-dot new"></div>
+                            <div>
+                                <div class="notif-title">PPh 22 Marketplace ditunda hingga 31 Okt 2026</div>
+                                <div class="notif-time">2 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="dropdown-item notif-item">
+                            <div class="notif-dot new"></div>
+                            <div>
+                                <div class="notif-title">Faktur Pajak #010.000-26.00001234 telah disetujui</div>
+                                <div class="notif-time">5 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="dropdown-item notif-item">
+                            <div class="notif-dot"></div>
+                            <div>
+                                <div class="notif-title">Bukti Potong PPh 21 Masa Juli tersedia di eBupot</div>
+                                <div class="notif-time">1 hari yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="dropdown-item notif-item">
+                            <div class="notif-dot"></div>
+                            <div>
+                                <div class="notif-title">SPT Tahunan 2025 telah diproses â€” status: diterima</div>
+                                <div class="notif-time">3 hari yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer">Lihat semua notifikasi â†’</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="language-selector" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <div class="flag-circle" style="width: 18px; height: 18px; border-radius: 50%; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--border-light); flex-shrink: 0;">
+                    <div style="flex: 1; background-color: #ef4444;"></div>
+                    <div style="flex: 1; background-color: #ffffff;"></div>
+                </div>
+                <span class="lang-text" style="font-size: 13px; font-weight: 600; line-height: 1; margin-top: 1px;">ID</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:9px; opacity: 0.7; margin-left: 2px;"></i>
+            </div>
+            
+                        <div class="user-profile dropdown" style="border: 1px solid #444; border-radius: 12px; padding: 6px 12px 6px 8px; background: rgba(0,0,0,0.15); align-items: center; display: flex; flex-direction: row; margin-left: 10px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 12px; margin-left: 4px;">
+                   <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                   <circle cx="12" cy="10" r="3"></circle>
+                   <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path>
+                </svg>
+                <div class="user-info" style="align-items: flex-start;">
+                    <div class="npwp" style="font-family: monospace; font-size: 11px; color: #9ca3af; letter-spacing: 0.5px;">0000000000000000</div>
+                    <div class="name" style="font-size: 13px; font-weight: 700; color: #ffffff; text-transform: uppercase;">Lorem Ipsum</div>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="color: #eab308; font-size: 10px; margin-left: 20px;"></i>
+                
+                <div class="dropdown-menu user-dropdown">
+                    <div class="dropdown-header">Akun Saya</div>
+                    <div class="dropdown-item"><i class="fa-solid fa-user"></i> Profil Saya</div>
+                    <div class="dropdown-item"><i class="fa-solid fa-key"></i> Pengaturan Kata Sandi</div>
+                    <div class="dropdown-item"><i class="fa-solid fa-certificate"></i> Sertifikat Digital</div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item"><i class="fa-solid fa-right-left"></i> Keluar dari Impersonate</div>
+                    <div class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket"></i> Logout</div>
+                </div>
+            </div>
+            
+            <!-- Pengaturan Tampilan -->
+            <button class="icon-btn settings-btn" aria-label="Pengaturan Tampilan" title="Pengaturan Tampilan"><i class="fa-solid fa-sliders"></i></button>
+        </div>
+    </header>
+
+    <!-- ========== 2. SECONDARY NAVIGATION BAR ========== -->
+    <nav class="nav-secondary">
+        <ul class="nav-list">
+            <!-- Portal Saya -->
+            <li class="nav-item dropdown">
+                <i class="fa-solid fa-house-user nav-main-icon" style="color: var(--nav-green)"></i>
+                <span class="nav-text">Portal Saya</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">PORTAL SAYA</li>
+                    <li class="dropdown-item">Dashboard</li>
+                    <li class="dropdown-item">Profil Saya</li>
+                    <li class="dropdown-item">Dokumen Saya</li>
+                    <li class="dropdown-item">Notifikasi Saya</li>
+                    <li class="dropdown-item">Kasus Saya</li>
+                    <li class="dropdown-item">Kasus Berjalan Saya</li>
+                    <li class="dropdown-item">Kode Otorisasi / Sertifikat Digital</li>
+                    <li class="dropdown-item">Pengukuhan PKP</li>
+                    <li class="dropdown-item">Perubahan Data</li>
+                    <li class="dropdown-item">Perubahan Status</li>
+                    <li class="dropdown-item">Penghapusan & Pencabutan</li>
+                    <li class="dropdown-item">Pendaftaran Objek Pajak PBB</li>
+                </ul>
+            </li>
+
+            <!-- e-Faktur -->
+            <li class="nav-item dropdown">
+                <i class="fa-solid fa-file-invoice nav-main-icon" style="color: var(--nav-blue)"></i>
+                <span class="nav-text">e-Faktur</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">E-FAKTUR</li>
+                    <li class="dropdown-item">Pajak Keluaran</li>
+                    <li class="dropdown-item">Pajak Masukan</li>
+                    <li class="dropdown-item">Retur Pajak Keluaran</li>
+                    <li class="dropdown-item">Retur Pajak Masukan</li>
+                    <li class="dropdown-item">Impor Faktur (XML)</li>
+                </ul>
+            </li>
+
+            <!-- eBUPOT -->
+            <li class="nav-item dropdown">
+                <i class="fa-solid fa-file-signature nav-main-icon" style="color: var(--nav-teal)"></i>
+                <span class="nav-text">eBUPOT</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">EBUPOT</li>
+                    <li class="dropdown-item">Bukti Potong PPh 21/26</li>
+                    <li class="dropdown-item">Bukti Potong Unifikasi</li>
+                    <li class="dropdown-item sub-label">PPh 4(2), 15, 22, 23</li>
+                    <li class="dropdown-item">Bukti Potong Saya</li>
+                    <li class="dropdown-item sub-label">Lihat & unduh BP yang diterima</li>
+                    <li class="dropdown-item">Penyetoran Sendiri</li>
+                </ul>
+            </li>
+
+            <!-- E-OMZET (NEW MENU) -->
+            <li class="nav-item dropdown" id="tutNavEOmzet"><i class="fa-solid fa-chart-line nav-main-icon" style="color: var(--accent-gold)"></i><span class="nav-text">E-Omzet</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">E-OMZET</li>
+                    <li class="dropdown-item" id="tutNavManajemen">Manajemen Marketplace</li>
+                    <li class="dropdown-item" id="tutNavTracking">Tracking Omzet</li>
+                    <li class="dropdown-item" id="tutNavRincian">Rincian Transaksi</li>
+                </ul>
+            </li>
+
+            <!-- SPT -->
+            <li class="nav-item dropdown" id="tutNavSPT"><i class="fa-solid fa-file-lines nav-main-icon" style="color: var(--nav-orange)"></i><span class="nav-text">SPT</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">SURAT PEMBERITAHUAN (SPT)</li>
+                    <li class="dropdown-item" id="tutNavSPTMasa">Surat Pemberitahuan (SPT)</li>
+                    <li class="dropdown-item">Pencatatan</li>
+                    <li class="dropdown-item">Dasbor Kompensasi</li>
+                    <li class="dropdown-item">Pengungkapan Ketidakbenaran SPT</li>
+                </ul>
+            </li>
+
+            <!-- Pembayaran -->
+            <li class="nav-item dropdown">
+                <i class="fa-solid fa-file-invoice-dollar nav-main-icon" style="color: var(--nav-green)"></i>
+                <span class="nav-text">Pembayaran</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">PEMBAYARAN</li>
+                    <li class="dropdown-item">Layanan Mandiri Kode Billing</li>
+                    <li class="dropdown-item">Billing atas Tagihan Pajak</li>
+                    <li class="dropdown-item">Kode Billing Belum Dibayar</li>
+                    <li class="dropdown-item">Permohonan Pemindahbukuan</li>
+                    <li class="dropdown-item">Formulir Restitusi Pajak</li>
+                    <li class="dropdown-item">Permohonan Imbalan Bunga</li>
+                </ul>
+            </li>
+
+            <!-- Buku Besar -->
+            <li class="nav-item">
+                <i class="fa-solid fa-book nav-main-icon" style="color: var(--nav-blue)"></i>
+                <span class="nav-text">Buku Besar</span>
+            </li>
+
+            <!-- Layanan WP -->
+            <li class="nav-item dropdown">
+                <i class="fa-solid fa-handshake nav-main-icon" style="color: var(--nav-purple)"></i>
+                <span class="nav-text">Layanan WP</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">LAYANAN WP</li>
+                    <li class="dropdown-item">Layanan Administrasi</li>
+                    <li class="dropdown-item">Permintaan Informasi Perpajakan</li>
+                    <li class="dropdown-item">Pengaduan, Saran & Apresiasi</li>
+                    <li class="dropdown-item">Layanan Edukasi Perpajakan</li>
+                    <li class="dropdown-item">Riwayat Edukasi</li>
+                    <li class="dropdown-item">Pengetahuan Dasar Perpajakan</li>
+                </ul>
+            </li>
+
+            <!-- Manajemen Akses -->
+            <li class="nav-item dropdown">
+                <i class="fa-solid fa-shield-halved nav-main-icon" style="color: var(--nav-red)"></i>
+                <span class="nav-text">Manajemen Akses</span>
+                <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">MANAJEMEN AKSES</li>
+                    <li class="dropdown-item">Kelola Hak Akses (Delegasi)</li>
+                    <li class="dropdown-item">Fitur Impersonate</li>
+                    <li class="dropdown-item">Pemberian Role Access</li>
+                    <li class="dropdown-item">Pengaturan Kata Sandi</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ========== 3. MAIN CONTENT AREA ========== -->
+    <main class="main-content" id="mainContentArea">
+        <!-- ============================================== -->
+        <!-- VIEW: DASHBOARD (DEFAULT)                      -->
+        <!-- ============================================== -->
+        <div id="viewDashboard" class="view-section active">
+            <!-- Left Column: Welcome Card -->
+            <div class="welcome-card">
+                <p class="welcome-greeting"><span id="time-greeting">Selamat datang</span>, <strong>Lorem Ipsum.</strong></p>
+                <h1 class="welcome-title">Coretax DJP siap melayani kebutuhan perpajakan Anda.</h1>
+                <p class="welcome-subtitle">Pilih tab untuk lihat pengumuman terbaru atau panduan bantuan.</p>
+                
+                <div class="welcome-tabs">
+                    <div class="welcome-tab active" id="tabPengumuman">
+                        <div class="tab-icon coral"><i class="fa-solid fa-bullhorn"></i></div>
+                        <div class="tab-info">
+                            <div class="tab-title">Pengumuman Terbaru</div>
+                            <div class="tab-description">Pengumuman dan informasi penting dari DJP.</div>
+                            <div class="tab-meta">Banner rotate setiap 5 detik, sorot gambar untuk membaca.</div>
+                        </div>
+                    </div>
+                    <div class="tab-divider"></div>
+                    <div class="welcome-tab" id="tabBantuan">
+                        <div class="tab-icon gray"><i class="fa-solid fa-circle-question"></i></div>
+                        <div class="tab-info">
+                            <div class="tab-title">Bantuan & Panduan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="content-right">
+                <!-- Tab: Pengumuman -->
+                <div id="tabContentPengumuman" class="tab-content active">
+                    <div id="bannerCarousel" class="carousel-container">
+                        <div class="carousel-slide active" data-slide="0">
+                            <div class="banner-flat banner-dark">
+                                <div class="banner-left">
+                                    <h2 class="banner-title">PENYEGARAN<br>TAMPILAN<br>CORETAX</h2>
+                                    <p class="banner-bottom-text">Penyegaran tampilan merupakan bagian dari <strong><em>transformasi bertahap</em></strong> yang akan terus dikembangkan.</p>
+                                </div>
+                                <div class="banner-right">
+                                    <p class="banner-intro">Kami terus mendengarkan masukan dan saran pengguna Coretax DJP.</p>
+                                    <ul class="banner-points">
+                                        <li><i class="fa-solid fa-check-circle"></i> Sebagai langkah awal peningkatan layanan kami hadirkan <strong>penyegaran antarmuka (UI)</strong> pada halaman utama dan navigasi antar-menu.</li>
+                                        <li><i class="fa-solid fa-check-circle"></i> Perubahan ini dirancang untuk meningkatkan <strong>kemudahan akses, keterbacaan informasi,</strong> dan <strong>kenyamanan penggunaan.</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-slide="1">
+                            <div class="banner-flat banner-gold-flat">
+                                <div class="banner-left">
+                                    <div class="eomzet-badge">FITUR BARU</div>
+                                    <h2 class="banner-title">E-OMZET</h2>
+                                    <p class="banner-bottom-text">Tracking omzet UMKM di marketplace secara otomatis. <strong>Tidak perlu lagi surat pernyataan manual.</strong></p>
+                                </div>
+                                <div class="banner-right">
+                                    <p class="banner-intro">Solusi cerdas untuk pemungutan PPh Pasal 22 yang adil.</p>
+                                    <ul class="banner-points">
+                                        <li><i class="fa-solid fa-chart-line"></i> Pantau omzet marketplace Anda secara <strong>real-time</strong> dari dashboard Coretax.</li>
+                                        <li><i class="fa-solid fa-shield-halved"></i> Pemungutan hanya dimulai ketika omzet <strong>melampaui Rp500 juta</strong>.</li>
+                                        <li><i class="fa-solid fa-file-invoice"></i> Bukti potong otomatis terintegrasi ke <strong>E-Bupot & SPT Tahunan</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-slide="2">
+                            <div class="banner-flat banner-dark">
+                                <div class="banner-left">
+                                    <h2 class="banner-title">LAPOR SPT<br>TAHUNAN</h2>
+                                    <p class="banner-bottom-text">Laporkan SPT Tahunan Anda tepat waktu melalui <strong>Coretax DJP</strong>.</p>
+                                </div>
+                                <div class="banner-right">
+                                    <p class="banner-intro">Pelaporan lebih mudah dan cepat.</p>
+                                    <ul class="banner-points">
+                                        <li><i class="fa-solid fa-calendar-check"></i> Batas waktu SPT Tahunan <strong>WP Orang Pribadi: 31 Maret</strong>.</li>
+                                        <li><i class="fa-solid fa-building"></i> Batas waktu SPT Tahunan <strong>WP Badan: 30 April</strong>.</li>
+                                        <li><i class="fa-solid fa-circle-info"></i> Pastikan data penghasilan dan kredit pajak Anda sudah <strong>lengkap</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-prev" aria-label="Sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-next" aria-label="Berikutnya"><i class="fa-solid fa-chevron-right"></i></button>
+                        <div class="carousel-dots">
+                            <span class="carousel-dot active" data-dot="0"></span>
+                            <span class="carousel-dot" data-dot="1"></span>
+                            <span class="carousel-dot" data-dot="2"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab: Bantuan -->
+                <div id="tabContentBantuan" class="tab-content">
+                    <div class="bantuan-panel">
+                        <h3><i class="fa-solid fa-circle-question"></i> Bantuan & Panduan</h3>
+                        <div class="bantuan-list">
+                            <div class="bantuan-item">
+                                <i class="fa-solid fa-book-open"></i>
+                                <div>
+                                    <div class="bantuan-title">Panduan Penggunaan Coretax</div>
+                                    <div class="bantuan-desc">Pelajari cara menggunakan setiap fitur di Coretax DJP</div>
+                                </div>
+                            </div>
+                            <div class="bantuan-item">
+                                <i class="fa-solid fa-circle-question"></i>
+                                <div>
+                                    <div class="bantuan-title">FAQ Perpajakan</div>
+                                    <div class="bantuan-desc">Pertanyaan yang sering diajukan seputar perpajakan</div>
+                                </div>
+                            </div>
+                            <div class="bantuan-item">
+                                <i class="fa-solid fa-headset"></i>
+                                <div>
+                                    <div class="bantuan-title">Hubungi Helpdesk</div>
+                                    <div class="bantuan-desc">Kring Pajak 1500200 â€” Senin s.d. Jumat, 08.00â€“16.00 WIB</div>
+                                </div>
+                            </div>
+                            <div class="bantuan-item">
+                                <i class="fa-solid fa-play-circle"></i>
+                                <div>
+                                    <div class="bantuan-title">Video Tutorial</div>
+                                    <div class="bantuan-desc">Tonton panduan video langkah demi langkah</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- ========== 4. BOTTOM SECTION ========== -->
+    <section class="education-section" style="grid-column: 1 / -1; margin-top: 24px; padding: 24px 0 0 0;">
+        <div class="education-header">
+            <div class="section-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h2>Layanan Edukasi Perpajakan</h2>
+        </div>
+        <div class="education-grid">
+            <div class="education-card edu-card">
+                <div class="education-card-icon icon-orange"><i class="fa-solid fa-book"></i></div>
+                <h3 class="education-card-title">Materi Edukasi Umum</h3>
+                <p class="education-card-desc">Artikel, panduan, dan video edukasi perpajakan</p>
+            </div>
+            <div class="education-card edu-card">
+                <div class="education-card-icon icon-blue"><i class="fa-solid fa-file-lines"></i></div>
+                <h3 class="education-card-title">Permohonan Edukasi</h3>
+                <p class="education-card-desc">Ajukan permohonan edukasi perpajakan</p>
+            </div>
+            <div class="education-card edu-card">
+                <div class="education-card-icon icon-green"><i class="fa-solid fa-calendar-days"></i></div>
+                <h3 class="education-card-title">Jadwal Kegiatan Edukasi</h3>
+                <p class="education-card-desc">Jadwal sosialisasi dan pelatihan perpajakan</p>
+            </div>
+        </div>
+    </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: MANAJEMEN MARKETPLACE                    -->
+        <!-- ============================================== -->
+        <div id="viewManajemenMarketplace" class="view-section" style="display:none; width: 100%;">
+            <div class="page-header" style="margin-bottom: 24px;">
+                <h2 style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Manajemen Marketplace (PMSE)</h2>
+                <p style="font-size: 14px; color: var(--text-secondary);">Tautkan akun toko online Anda untuk otomatisasi pelaporan omzet dan e-Bupot PPh Pasal 22 melalui integrasi API Coretax.</p>
+            </div>
+
+            <div class="marketplace-form-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
+                <form id="marketplaceForm" class="coretax-form">
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px;">Platform PMSE <span style="color: var(--nav-coral);">*</span></label>
+                            <select id="mpPlatform" required style="width: 100%; padding: 12px 16px; background-color: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-family); font-size: 14px;">
+                                <option value="" disabled selected hidden>Pilih platform...</option>
+                                <option value="shopee">Shopee</option>
+                                <option value="tokopedia">Tokopedia</option>
+                                <option value="tiktok">TikTok Shop</option>
+                                <option value="blibli">Blibli</option>
+                                <option value="lazada">Lazada</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px;">Nama Toko <span style="color: var(--nav-coral);">*</span></label>
+                            <input type="text" id="mpStoreName" placeholder="Mis. Maju Bersatu Store" required style="width: 100%; padding: 12px 16px; background-color: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-family); font-size: 14px;">
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px;">ID Toko / Merchant ID <span style="color: var(--nav-coral);">*</span></label>
+                            <input type="text" id="mpStoreId" placeholder="ID unik dari platform" required style="width: 100%; padding: 12px 16px; background-color: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-family); font-size: 14px;">
+                            <span style="display: block; margin-top: 6px; font-size: 11px; color: var(--text-muted);">Dapat dilihat pada menu profil toko di aplikasi PMSE Anda.</span>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px;">URL Toko <span style="color: var(--text-muted); font-weight: 400;">(Opsional)</span></label>
+                            <input type="url" id="mpStoreUrl" placeholder="https://..." style="width: 100%; padding: 12px 16px; background-color: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-family); font-size: 14px;">
+                        </div>
+                    </div>
+
+                    <div class="form-consent-box" style="margin-top: 24px; padding: 16px; background-color: rgba(212, 160, 23, 0.05); border: 1px solid rgba(212, 160, 23, 0.2); border-radius: var(--radius-sm);">
+                        <label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer;">
+                            <input type="checkbox" id="mpConsent" required style="margin-top: 4px; accent-color: var(--accent-gold);">
+                            <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                                Saya dengan ini memberikan kuasa dan persetujuan kepada penyelenggara PMSE terkait untuk <strong>mengirimkan data transaksi omzet dan bukti pemotongan PPh Pasal 22</strong> secara langsung ke sistem Coretax DJP melalui Open API DJP.
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-actions" style="margin-top: 32px; display: flex; gap: 12px; justify-content: flex-end;">
+                        <button type="button" class="btn-coretax" onclick="document.getElementById('marketplaceForm').reset();" style="padding: 10px 24px; border: 1px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 6px; cursor: pointer; font-weight: 600; font-family: var(--font-family);">Batal</button>
+                        <button type="submit" class="btn-coretax" style="padding: 10px 24px; border: none; background-color: var(--accent-gold); color: #111; border-radius: 6px; cursor: pointer; font-weight: 700; font-family: var(--font-family);"><i class="fa-solid fa-link" style="margin-right: 6px;"></i> Hubungkan Akun</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- List Table -->
+            <div class="connected-accounts-section" style="margin-top: 40px; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 24px;">Daftar Akun Terhubung</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">
+                                <th style="padding: 12px 16px; font-weight: 600;">Platform</th>
+                                <th style="padding: 12px 16px; font-weight: 600;">Nama Toko</th>
+                                <th style="padding: 12px 16px; font-weight: 600;">Merchant ID</th>
+                                <th style="padding: 12px 16px; font-weight: 600;">Status Integrasi</th>
+                                <th style="padding: 12px 16px; font-weight: 600; text-align: center;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mpTbody">
+                            <tr style="border-bottom: 1px solid var(--border-light);">
+                                <td colspan="5" style="padding: 32px 16px; text-align: center; color: var(--text-muted); font-style: italic;">Belum ada platform marketplace yang terhubung.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: TRACKING OMZET                           -->
+        <!-- ============================================== -->
+        <div id="viewTrackingOmzet" class="view-section" style="display:none; width: 100%;">
+            <div class="page-header" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Tracking Omzet</h2>
+                </div>
+                <div style="display: flex; gap: 12px;">
+                    <select class="form-control" style="width: auto; padding: 8px 12px; background-color: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-sm); font-size: 13px;">
+                        <option>Tahun Pajak 2026</option>
+                        <option>Tahun Pajak 2025</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px;">
+                <div class="tracking-stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px;">Total Omzet Bersih (Net)</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="trackTotalNet">Rp 420.500.000</div>
+                    <div style="font-size: 12px; color: var(--nav-green);"><i class="fa-solid fa-circle-check"></i> Sudah dikurangi biaya admin & ongkir</div>
+                </div>
+                <div class="tracking-stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px;">Sisa Kuota Bebas Pajak</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--nav-green); margin-bottom: 8px;" id="trackSisaKuota">Rp 79.500.000</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Dari batas Rp 500.000.000 (PMK 37)</div>
+                </div>
+                <div class="tracking-stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm); border-top: 3px solid var(--accent-gold);">
+                    <div style="font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px;">Status Sinyal API PMSE</div>
+                    <div style="font-size: 18px; font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;" id="trackStatusPPh"><span style="color: var(--accent-gold);"><i class="fa-solid fa-shield-halved"></i> BEBAS PUNGUTAN</span></div>
+                    <div style="font-size: 12px; color: var(--text-muted);" id="trackStatusInfo">Pemungutan PPh 22: <strong>Nonaktif</strong></div>
+                </div>
+            </div>
+
+            <!-- Progress Bar Section -->
+            <div class="tracking-progress-section" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px;">
+                    <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary);"><i class="fa-solid fa-bars-progress" style="color: var(--nav-blue); margin-right: 8px;"></i> Progress Menuju Batas Rp 500 Juta</h3>
+                    <span style="font-size: 28px; font-weight: 900; color: var(--accent-gold);" id="trackPercent">84.1%</span>
+                </div>
+                
+                <div class="progress-bar-container" style="height: 28px; background-color: var(--bg-input); border-radius: 14px; overflow: hidden; margin-bottom: 12px; position: relative; border: 1px solid var(--border-color);">
+                    <div class="progress-bar-fill" style="width: 84.1%; height: 100%; background: linear-gradient(90deg, #a67c00, #f0c040); border-radius: 14px; transition: width 1.5s ease-in-out;" id="trackProgressBar"></div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); font-weight: 600;">
+                    <span>Rp 0</span>
+                    <span>Rp 250 Jt</span>
+                    <span>Rp 500 Jt</span>
+                </div>
+            </div>
+
+            <!-- Breakdown & Actions -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+                <!-- Rincian per Platform -->
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm);">
+                    <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px;">Rincian Omzet per Platform</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">
+                                    <th style="padding: 12px 0; font-weight: 600;">Platform / Toko</th>
+                                    <th style="padding: 12px 0; font-weight: 600; text-align: right;">Omzet Kotor</th>
+                                    <th style="padding: 12px 0; font-weight: 600; text-align: right;">Omzet Bersih (Net)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trackPlatformTbody">
+                                <!-- Diisi oleh JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PPh & Info -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm);">
+                        <div style="width: 40px; height: 40px; background-color: rgba(45, 212, 191, 0.1); color: var(--nav-teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px;">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Pengkreditan PPh 22</h3>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.5;">Kelola Bukti Potong PPh Pasal 22 (Prepopulated) yang telah disetor oleh PMSE untuk dikreditkan ke SPT Anda.</p>
+                        <div style="font-size: 13px; font-weight: 700; margin-bottom: 16px;" id="trackPPhTotal">Total PPh 22 Dipotong: <span style="color: var(--accent-gold);">Rp 0</span></div>
+                        <button id="btnKeEbupot" class="btn-coretax" style="width: 100%; padding: 10px; background-color: transparent; border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 6px; font-weight: 600; cursor: pointer;">Ke Menu eBupot</button>
+                    </div>
+                    
+                    <div style="background-color: rgba(96, 165, 250, 0.05); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: var(--radius-lg); padding: 20px;">
+                        <h4 style="font-size: 13px; font-weight: 700; color: var(--nav-blue); margin-bottom: 6px;"><i class="fa-solid fa-circle-info"></i> Info Net Omzet</h4>
+                        <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">Sesuai ketentuan, omzet yang dihitung menuju batas Rp500 juta adalah <strong>omzet bersih</strong> (setelah dikurangi biaya layanan platform dan ongkos kirim).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: RINCIAN TRANSAKSI                        -->
+        <!-- ============================================== -->
+        <div id="viewRincianTransaksi" class="view-section" style="display:none; width: 100%;">
+            <div class="page-header" style="margin-bottom: 24px;">
+                <h2 style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Rincian Transaksi</h2>
+            </div>
+            
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden;">
+                <!-- Toolbar/Filter -->
+                <div style="padding: 16px 24px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background-color: rgba(255,255,255,0.02);">
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <select class="form-control" style="width: auto; padding: 6px 12px; background-color: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 4px; font-size: 13px;">
+                            <option>Semua Platform</option>
+                            <option>Shopee</option>
+                            <option>Tokopedia</option>
+                        </select>
+                        <select class="form-control" style="width: auto; padding: 6px 12px; background-color: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 4px; font-size: 13px;">
+                            <option>Tahun 2026</option>
+                        </select>
+                        <select class="form-control" style="width: auto; padding: 6px 12px; background-color: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 4px; font-size: 13px;">
+                            <option>Semua Bulan</option>
+                            <option>Januari</option>
+                            <option>Februari</option>
+                        </select>
+                        <button class="btn-coretax" style="background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer;"><i class="fa-solid fa-filter"></i> Filter</button>
+                        <button id="btnLaporkan" class="btn-coretax" style="background: var(--nav-teal); border: none; color: #111; padding: 6px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: 700;"><i class="fa-solid fa-paper-plane"></i> Laporkan</button>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn-coretax" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer;"><i class="fa-solid fa-rotate-right"></i> Refresh API</button>
+                        <button class="btn-coretax" style="background: var(--accent-gold); border: none; color: #111; padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: 600;"><i class="fa-solid fa-file-csv"></i> Unduh CSV</button>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; font-family: var(--font-family);">
+                        <thead>
+                            <tr style="background-color: rgba(255,255,255,0.03); border-bottom: 2px solid var(--border-color); color: var(--text-secondary);">
+                                <th style="padding: 12px 24px; font-weight: 600;">No</th>
+                                <th style="padding: 12px 24px; font-weight: 600;">Tanggal</th>
+                                <th style="padding: 12px 24px; font-weight: 600;">Platform</th>
+                                <th style="padding: 12px 24px; font-weight: 600;">No. Invoice / Resi</th>
+                                <th style="padding: 12px 24px; font-weight: 600; text-align: right;">Nilai Transaksi (Kotor)</th>
+                                <th style="padding: 12px 24px; font-weight: 600; text-align: right;">PPh 22 Dipungut (0,5%)</th>
+                                <th style="padding: 12px 24px; font-weight: 600; text-align: right;">Omzet Bersih (Net)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rincianTbody">
+                            <!-- Diisi oleh JS -->
+                        </tbody>
+                        <tfoot id="rincianTfoot">
+                            <!-- Diisi oleh JS -->
+                        </tfoot>
+                    </table>
+                </div>
+
+                <!-- Pagination Footer -->
+                <div id="rincianPagination" style="padding: 16px 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background-color: rgba(255,255,255,0.02); font-size: 12px; color: var(--text-secondary);">
+                    <div id="rincianCount">Menampilkan 1 hingga 4 dari total 4 data transaksi API terhubung</div>
+                    <div style="display: flex; gap: 4px;">
+                        <button style="background: transparent; border: 1px solid var(--border-light); color: var(--text-muted); padding: 4px 10px; border-radius: 4px; cursor: not-allowed;"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button style="background: var(--accent-gold); border: 1px solid var(--accent-gold); color: #111; padding: 4px 12px; border-radius: 4px; font-weight: 700;">1</button>
+                        <button style="background: transparent; border: 1px solid var(--border-light); color: var(--text-muted); padding: 4px 10px; border-radius: 4px; cursor: not-allowed;"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: EBUPOT UNIFIKASI                         -->
+        <!-- ============================================== -->
+        <div id="viewEbupotUnifikasi" class="view-section" style="display:none; width: 100%;">
+            <div class="page-header" style="margin-bottom: 24px;">
+                <h2 style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Bukti Potong PPh Pasal 22 â€” Unifikasi</h2>
+                <p style="font-size: 14px; color: var(--text-secondary);">Daftar bukti potong prepopulated dari PMSE yang memungut PPh 22 atas transaksi Anda.</p>
+            </div>
+
+            <!-- Summary Card -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px;">
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+                    <div style="font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px;">Total PPh 22 Dipotong</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--accent-gold);" id="ebupotTotalPPh">Rp 0</div>
+                </div>
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+                    <div style="font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px;">Jumlah Bukti Potong</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--text-primary);" id="ebupotCount">0 Dokumen</div>
+                </div>
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px;">
+                    <div style="font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px;">Status</div>
+                    <div style="font-size: 18px; font-weight: 800; color: var(--nav-green);" id="ebupotStatus"><i class="fa-solid fa-circle-check"></i> Prepopulated</div>
+                </div>
+            </div>
+
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden;">
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; font-family: var(--font-family);">
+                        <thead>
+                            <tr style="background-color: rgba(255,255,255,0.03); border-bottom: 2px solid var(--border-color); color: var(--text-secondary);">
+                                <th style="padding: 12px 24px; font-weight: 600;">No</th>
+                                <th style="padding: 12px 24px; font-weight: 600;">Masa Pajak</th>
+                                <th style="padding: 12px 24px; font-weight: 600;">NTPN</th>
+                                <th style="padding: 12px 24px; font-weight: 600;">Nama Pemotong (PMSE)</th>
+                                <th style="padding: 12px 24px; font-weight: 600; text-align: right;">DPP (Omzet Net)</th>
+                                <th style="padding: 12px 24px; font-weight: 600; text-align: center;">Tarif</th>
+                                <th style="padding: 12px 24px; font-weight: 600; text-align: right;">PPh Dipotong</th>
+                                <th style="padding: 12px 24px; font-weight: 600; text-align: center;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ebupotTbody">
+                            <tr>
+                                <td colspan="8" style="padding: 48px 24px; text-align: center; color: var(--text-muted);">
+                                    <i class="fa-solid fa-file-circle-xmark" style="font-size: 32px; margin-bottom: 12px; display: block; opacity: 0.5;"></i>
+                                    Belum ada bukti potong. Pemungutan PPh 22 dimulai setelah omzet melebihi Rp 500 juta.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: SPT MASA KONSEP                          -->
+        <!-- ============================================== -->
+                <div id="viewSPTMasa" class="view-section" style="display:none; width: 100%;">
+            
+            <!-- PAGE 1: KONSEP SPT LIST -->
+            <div id="sptKonsepPage">
+                <div style="display: flex; gap: 20px;">
+                    <!-- Left Sidebar -->
+                    <div style="width: 250px; flex-shrink: 0;">
+                        <div style="background: #242949; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+                            <div style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">0000000000000000</div>
+                            <div style="font-size: 13px; font-weight: 500;">Lorem Ipsum</div>
+                        </div>
+                        <div style="background: #1e1e24; border: 1px solid #333; padding: 12px 16px; border-top: none;">
+                            <div style="font-size: 13px; font-weight: 700; color: white;">Surat Pemberitahuan (SPT)</div>
+                        </div>
+                        <div style="background: white; padding: 12px 16px; border-left: 4px solid #ffd600;">
+                            <div style="font-size: 13px; font-weight: 700; color: #111;">Konsep SPT</div>
+                        </div>
+                        <div style="background: #1e1e24; border: 1px solid #333; padding: 12px 16px; border-top: none; color: #888;">
+                            <div style="font-size: 13px;">SPT Menunggu Pembayaran</div>
+                        </div>
+                        <div style="background: #1e1e24; border: 1px solid #333; padding: 12px 16px; border-top: none; color: #888;">
+                            <div style="font-size: 13px;">SPT Dilaporkan</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Content -->
+                    <div style="flex: 1;">
+                        <div style="background: #ffd600; border-radius: 8px; padding: 30px 40px; display: flex; align-items: center; gap: 24px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                            <div style="width: 80px; height: 80px; font-size: 64px; color: #111; display:flex; align-items:center; justify-content:center;"><i class="fa-solid fa-file-invoice"></i></div>
+                            <h2 style="color: #111; font-size: 32px; font-weight: 800; letter-spacing: -0.5px;">SPT Belum Disampaikan</h2>
+                        </div>
+                        
+                        <button onclick="document.getElementById('sptKonsepPage').style.display='none'; document.getElementById('sptFormPage').style.display='block';" style="background: #ffd600; color: #111; font-weight: 700; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 14px;">
+                            <i class="fa-solid fa-file-circle-plus"></i> Buat Konsep SPT
+                        </button>
+                        
+                                                <div style="background: #1e1e24; border: 1px solid #333; border-radius: 8px; overflow: hidden;">
+                            <div style="padding: 12px 16px; border-bottom: 1px solid #333; display: flex; gap: 8px;">
+                                <button style="background: transparent; border: 1px solid #444; color: #ccc; border-radius: 4px; width: 32px; height: 32px; cursor: pointer;"><i class="fa-solid fa-rotate-right"></i></button>
+                                <button style="background: transparent; border: 1px solid #444; color: #ccc; border-radius: 4px; width: 32px; height: 32px; cursor: pointer;"><i class="fa-regular fa-file-lines"></i></button>
+                                <button style="background: transparent; border: 1px solid #444; color: #ccc; border-radius: 4px; width: 32px; height: 32px; cursor: pointer;"><i class="fa-solid fa-filter"></i></button>
+                            </div>
+                            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; color: #ddd;">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid #333; background: #242949;">
+                                        <th style="padding: 12px 16px; font-weight: 600;">Jenis Pajak <i class="fa-solid fa-arrow-down-a-z" style="color: #888; margin-left: 4px; font-size: 10px;"></i></th>
+                                        <th style="padding: 12px 16px; font-weight: 600;">Jenis Surat Pemberitahuan Pajak <i class="fa-solid fa-arrow-down-a-z" style="color: #888; margin-left: 4px; font-size: 10px;"></i></th>
+                                        <th style="padding: 12px 16px; font-weight: 600;">Masa/Tahun Pajak <i class="fa-solid fa-arrow-down-a-z" style="color: #888; margin-left: 4px; font-size: 10px;"></i></th>
+                                        <th style="padding: 12px 16px; font-weight: 600; text-align: center;">Aksi</th>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #333; background: #1a1a24;">
+                                        <th style="padding: 8px 16px;"><input type="text" placeholder="Pilih Jenis Pajak" style="width: 100%; padding: 6px; background: #111; border: 1px solid #444; color: white; border-radius: 4px; font-size: 12px;"></th>
+                                        <th style="padding: 8px 16px;"><input type="text" placeholder="Pilih Jenis Surat..." style="width: 100%; padding: 6px; background: #111; border: 1px solid #444; color: white; border-radius: 4px; font-size: 12px;"></th>
+                                        <th style="padding: 8px 16px;"><input type="text" placeholder="Pilih Masa Pajak" style="width: 100%; padding: 6px; background: #111; border: 1px solid #444; color: white; border-radius: 4px; font-size: 12px;"></th>
+                                        <th style="padding: 8px 16px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid #333; transition: background 0.2s;" onmouseover="this.style.background='#2a2a35'" onmouseout="this.style.background='transparent'">
+                                        <td style="padding: 16px;">Pajak Penghasilan (PPh)</td>
+                                        <td style="padding: 16px;">SPT Tahunan PPh Orang Pribadi</td>
+                                        <td style="padding: 16px;">September 2026</td>
+                                        <td style="padding: 16px; text-align: center;">
+                                            <button id="tutBtnLanjutkan" onclick="document.getElementById('sptKonsepPage').style.display='none'; document.getElementById('sptFormPage').style.display='block';" style="background: #3b82f6; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600;"><i class="fa-solid fa-pen-to-square"></i> Lanjutkan</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="padding: 12px 16px; color: #888; font-size: 12px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333;">
+                                <span>Menampilkan 1-1 dari 1 data</span>
+                                <div style="display: flex; gap: 4px;">
+                                    <button style="background: transparent; border: 1px solid #444; color: #888; border-radius: 4px; padding: 4px 8px; cursor: pointer;">&lt;</button>
+                                    <button style="background: #444; border: 1px solid #555; color: white; border-radius: 4px; padding: 4px 10px; cursor: pointer;">1</button>
+                                    <button style="background: transparent; border: 1px solid #444; color: #888; border-radius: 4px; padding: 4px 8px; cursor: pointer;">&gt;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 2: FORM SPT -->
+            <div id="sptFormPage" style="display: none; padding-bottom: 60px;">
+                <!-- Breadcrumb -->
+                <div style="font-size: 12px; color: #aaa; margin-bottom: 16px;">
+                    <i class="fa-solid fa-home"></i> Beranda &rsaquo; Surat Pemberitahuan (SPT) &rsaquo; Personal Income Tax Return
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+                    <h1 style="font-size: 26px; font-weight: 600; color: white; width: 70%; line-height: 1.3;">SPT TAHUNAN PAJAK PENGHASILAN (PPh) WAJIB PAJAK ORANG PRIBADI</h1>
+                    <button style="background: #333; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;"><i class="fa-solid fa-info-circle"></i> XML Monitoring</button>
+                </div>
+                
+                <!-- Tabs -->
+                <div style="display: flex; gap: 24px; border-bottom: 1px solid #333; margin-bottom: 24px;">
+                    <div id="tabInduk" onclick="window.switchSptTab('Induk')" style="padding: 12px 16px; color: #ffd600; border-bottom: 3px solid #ffd600; font-weight: 700; cursor: pointer; font-size: 15px;">Induk</div>
+                    <div id="tabL1" onclick="window.switchSptTab('L1')" style="padding: 12px 16px; color: #888; border-bottom: 3px solid transparent; font-weight: 600; cursor: pointer; font-size: 15px;">L-1</div>
+                </div>
+                
+                <!-- CONTENT INDUK -->
+                <div id="contentInduk">
+                    <!-- HEADER -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> HEADER</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; display: flex; gap: 40px; font-size: 13px;">
+                            <div>
+                                <div style="color: #aaa; margin-bottom: 8px;">Tahun Pajak/Bagian Tahun Pajak</div>
+                                <div style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white;">2026</div>
+                            </div>
+                            <div>
+                                <div style="color: #aaa; margin-bottom: 8px;">Status</div>
+                                <div style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white;">Normal</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- A. IDENTITAS -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> A. IDENTITAS WAJIB PAJAK</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            <div style="display: grid; grid-template-columns: 200px 1fr; gap: 16px; margin-bottom: 16px;">
+                                <div style="color: #aaa;">1. NIK/NPWP *</div>
+                                <div style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white;">0000000000000000</div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 200px 1fr; gap: 16px; margin-bottom: 16px;">
+                                <div style="color: #aaa;">2. NAMA *</div>
+                                <div style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white;">Lorem Ipsum</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- B. IKHTISAR -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> B. IKHTISAR PENGHASILAN NETO</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; flex: 1;">1. b. 1 Apakah Anda menerima penghasilan dalam negeri dari usaha dan/atau pekerjaan bebas? *</div>
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="display:flex; gap: 8px; align-items:center;"><i class="fa-solid fa-circle-dot" style="color:#ffd600;"></i> <span style="color:#888;">Ya</span></div>
+                                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 6px 12px; border-radius: 4px; color: #93c5fd;"><i class="fa-solid fa-info-circle"></i> Ya, silahkan mengisi lampiran I Bagian B</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="color: #fff; flex: 1;">Total Penghasilan Neto</div>
+                                <div id="sptIndukNeto" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                                        <!-- C. PENGHITUNGAN PAJAK TERUTANG -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> C. PENGHITUNGAN PAJAK TERUTANG</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">2</div>
+                                <div style="color: #fff; flex: 1;">Penghasilan neto setahun (1a+1b+1c+1d)</div>
+                                <div id="sptIndukC2" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">3</div>
+                                <div style="color: #fff; flex: 1;">Apakah terdapat pengurang penghasilan neto seperti kompensasi kerugian atau zakat/sumbangan keagamaan yang dibayar selain yang telah diperhitungkan dalam Formulir BPA1 dan/atau BPA2? *</div>
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="display:flex; gap: 8px; align-items:center;"><i class="fa-solid fa-circle-dot" style="color:#ffd600;"></i></div>
+                                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 6px 12px; border-radius: 4px; color: #93c5fd; width: 250px; line-height: 1.4;"><i class="fa-solid fa-info-circle"></i> Tidak, silahkan lanjut pertanyaan berikutnya</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">4</div>
+                                <div style="color: #fff; flex: 1;">Penghasilan neto setelah pengurang penghasilan neto (2-3)</div>
+                                <div id="sptIndukC4" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">5</div>
+                                <div style="color: #fff; flex: 1;">Penghasilan Tidak Kena Pajak</div>
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="background: #111; padding: 6px 12px; border: 1px solid #333; border-radius: 4px; color: white; display: flex; justify-content: space-between; align-items: center; width: 80px;">TK/0 <i class="fa-solid fa-chevron-down" style="font-size: 10px; color: #888;"></i></div>
+                                    <div id="sptIndukC5" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">54.000.000</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">6</div>
+                                <div style="color: #fff; flex: 1;">Penghasilan Kena Pajak (4-5)</div>
+                                <div id="sptIndukC6" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">7</div>
+                                <div style="color: #fff; flex: 1;">PPh Terutang</div>
+                                <div id="sptIndukC7" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">8</div>
+                                <div style="color: #fff; flex: 1;">Apakah terdapat pengurang PPh Terutang? *</div>
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="display:flex; gap: 8px; align-items:center;"><i class="fa-solid fa-circle-dot" style="color:#ffd600;"></i></div>
+                                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 6px 12px; border-radius: 4px; color: #93c5fd; width: 250px; line-height: 1.4;"><i class="fa-solid fa-info-circle"></i> Tidak, silahkan lanjut pertanyaan berikutnya</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="color: #fff; width: 30px;">9</div>
+                                <div style="color: #fff; flex: 1;">PPh Terutang setelah pengurang PPh Terutang (7-8)</div>
+                                <div id="sptIndukC9" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- D. KREDIT PAJAK -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> D. KREDIT PAJAK</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="color: #fff; flex: 1;">10a Apakah terdapat PPh yang telah dipotong/dipungut oleh pihak lain? *</div>
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="display:flex; gap: 8px; align-items:center;"><i class="fa-solid fa-circle-dot" style="color:#ffd600;"></i> <span style="color:#888;">Ya</span></div>
+                                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 6px 12px; border-radius: 4px; color: #93c5fd;"><i class="fa-solid fa-info-circle"></i> Ya, silahkan mengisi lampiran 1 Bagian E</div>
+                                    <div id="sptIndukKredit" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 150px; text-align: right;">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                                        <!-- E. PPh KURANG/LEBIH BAYAR -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> E. PPh KURANG/LEBIH BAYAR</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 35px;">11a</div>
+                                <div style="color: #fff; flex: 1;">PPh kurang/lebih bayar (9-10a-10b-10c+10d)</div>
+                                <div id="sptIndukE11a" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 35px;">11b</div>
+                                <div style="color: #fff; flex: 1;">Apakah terdapat Surat Keputusan Persetujuan Pengangsuran atau Penundaan Pembayaran Pajak?</div>
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="display:flex; gap: 8px; align-items:center;"><i class="fa-solid fa-circle-dot" style="color:#ffd600;"></i></div>
+                                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 6px 12px; border-radius: 4px; color: #93c5fd; width: 250px; line-height: 1.4;"><i class="fa-solid fa-info-circle"></i> Tidak. Saya tidak memilikinya</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="color: #fff; width: 35px;">11c</div>
+                                <div style="color: #fff; flex: 1;">PPh yang masih harus dibayar (11a-11b)</div>
+                                <div id="sptIndukE11c" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 200px; text-align: right;">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- K. PERNYATAAN -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> K. PERNYATAAN</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; padding: 12px 16px; border-radius: 4px; color: #93c5fd; margin-bottom: 16px; width: max-content;"><i class="fa-solid fa-info-circle"></i> Status SPT : Nihil</div>
+                            <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 24px;">
+                                <i class="fa-solid fa-square-check" style="color: #666; font-size: 16px; margin-top: 2px;"></i>
+                                <div style="color: #ccc; font-style: italic;">Dengan menyadari sepenuhnya akan segala akibatnya termasuk sanksi-sanksi sesuai dengan ketentuan perundang-undangan yang berlaku, saya menyatakan bahwa apa yang telah saya beritahukan di atas beserta lampirannya adalah benar, lengkap, dan jelas.</div>
+                            </div>
+                            <button onclick="window.submitSpt()" style="background: #ffd600; color: #111; font-weight: 700; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;"><i class="fa-solid fa-paper-plane"></i> Laporkan SPT</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CONTENT L-1 -->
+                <div id="contentL1" style="display: none;">
+                                        <!-- A. PENGHASILAN DARI USAHA (PEMBUKUAN) -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> A. PENGHASILAN NETO DALAM NEGERI DARI USAHA DAN/ATAU PEKERJAAN BEBAS (PEMBUKUAN)</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">1</div>
+                                <div style="color: #fff; flex: 1;">Peredaran Usaha</div>
+                                <div id="sptL1Omzet" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 250px; text-align: right;">0</div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">2</div>
+                                <div style="color: #fff; flex: 1;">Harga Pokok Penjualan</div>
+                                <div id="sptL1Hpp" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 250px; text-align: right;">0</div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">3</div>
+                                <div style="color: #fff; flex: 1; font-weight: bold;">Laba/Rugi Bruto Usaha (1-2)</div>
+                                <div id="sptL1Bruto" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 250px; text-align: right; font-weight: bold;">0</div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2d45; padding-bottom: 16px; margin-bottom: 16px;">
+                                <div style="color: #fff; width: 30px;">4</div>
+                                <div style="color: #fff; flex: 1;">Biaya Usaha</div>
+                                <div id="sptL1Beban" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 250px; text-align: right;">0</div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="color: #fff; width: 30px;">5</div>
+                                <div style="color: #fff; flex: 1; font-weight: bold;">Penghasilan Neto (3-4)</div>
+                                <div id="sptL1Neto" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 250px; text-align: right; font-weight: bold;">0</div>
+                            </div>
+
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                    <!-- E. KREDIT PAJAK PIHAK LAIN -->
+                    <div style="margin-bottom: 16px;">
+                        <div style="background: #242949; padding: 12px 16px; color: white; font-weight: 700; font-size: 13px; border-radius: 6px 6px 0 0;"><i class="fa-solid fa-chevron-down" style="margin-right:8px;"></i> E. PPh YANG DIPOTONG/DIPUNGUT PIHAK LAIN</div>
+                        <div style="background: #1a1a24; padding: 24px; border: 1px solid #242949; border-top: none; border-radius: 0 0 6px 6px; font-size: 13px;">
+                            <p style="color: #aaa; margin-bottom: 16px;">Daftar Bukti Pemotongan/Pemungutan PPh 22 oleh Marketplace (Otomatis terintegrasi dari Coretax e-Bupot)</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid #333; color: #888;">
+                                        <th style="padding: 12px 8px; text-align: left; font-weight: 600;">Nama Pemotong</th>
+                                        <th style="padding: 12px 8px; text-align: left; font-weight: 600;">No. Bukti</th>
+                                        <th style="padding: 12px 8px; text-align: left; font-weight: 600;">Tanggal</th>
+                                        <th style="padding: 12px 8px; text-align: right; font-weight: 600;">PPh Dipotong</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sptL1KreditTable">
+                                    <!-- Diisi otomatis via JS -->
+                                </tbody>
+                            </table>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; padding-top: 16px; margin-top: 16px;">
+                                <div style="color: #fff; font-weight: bold;">Total PPh Dipungut</div>
+                                <div id="sptL1TotalKredit" style="background: #111; padding: 8px 12px; border: 1px solid #333; border-radius: 4px; color: white; width: 250px; text-align: right; font-weight: bold;">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ========== SEARCH MODAL ========== -->
+    <div id="searchModal" class="search-modal-overlay" aria-hidden="true">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchModalInput" placeholder="Cari layanan, menu, atau fitur..." autofocus>
+                <kbd>ESC</kbd>
+            </div>
+            <div class="search-modal-body">
+                <div class="search-section-label">Akses Cepat</div>
+                <div class="search-quick-link"><i class="fa-solid fa-house"></i> Portal Saya</div>
+                <div class="search-quick-link"><i class="fa-solid fa-file-invoice"></i> e-Faktur â€” Pajak Keluaran</div>
+                <div class="search-quick-link"><i class="fa-solid fa-file-circle-check"></i> eBUPOT â€” Bukti Potong Saya</div>
+                <div class="search-quick-link"><i class="fa-solid fa-calendar-check"></i> SPT Tahunan</div>
+                <div class="search-quick-link"><i class="fa-solid fa-barcode"></i> Layanan Mandiri Kode Billing</div>
+                <div class="search-quick-link"><i class="fa-solid fa-book"></i> Buku Besar</div>
+                <div class="search-quick-link highlight">
+                    <i class="fa-solid fa-chart-line"></i> E-Omzet â€” Tracking Omzet Marketplace
+                    <span class="new-badge">BARU</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 5. FOOTER ========== -->
+    <footer class="footer">
+        <p>&copy; 2026 Direktorat Jenderal Pajak â€” Kementerian Keuangan Republik Indonesia</p>
+        <p class="footer-sub">Prototype E-Omzet | Untuk Keperluan Edukasi</p>
+    </footer>
+
+        <!-- ============================================== -->
+    <!-- MARKETPLACE API SIMULATOR                      -->
+    <!-- ============================================== -->
+    <div id="simulatorToggle" class="simulator-toggle">
+        <i class="fa-solid fa-mobile-screen" style="font-size: 20px;"></i>
+        <span>SIMULASI API</span>
+    </div>
+
+    <div id="mobileSimulator" class="mobile-simulator">
+        <div class="simulator-notch"></div>
+        <button id="closeSimulator" class="close-simulator"><i class="fa-solid fa-xmark"></i></button>
+        <!-- Homescreen View -->
+        <div id="simHomescreen" style="display: flex; flex-direction: column; height: 100%; background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop') center/cover;">
+            <div style="display: flex; justify-content: space-between; padding: 16px 20px; color: white; font-size: 13px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+                <span></span> <!-- Empty space to avoid overlapping with close button -->
+                <span><i class="fa-solid fa-signal" style="margin-right: 4px;"></i> <i class="fa-solid fa-wifi" style="margin-right: 4px;"></i> <i class="fa-solid fa-battery-full"></i></span>
+            </div>
+            
+            <div id="simClock" style="text-align: center; color: white; font-size: 64px; font-weight: 200; margin-top: 30px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; text-shadow: 0 2px 15px rgba(0,0,0,0.2);">
+                10:00
+            </div>
+
+            <div id="simAppGrid" style="padding: 40px 20px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 16px;">
+                <!-- App icons will be injected here -->
+            </div>
+        </div>
+
+        <!-- App View -->
+        <div id="simAppView" style="display: none; flex-direction: column; height: 100%; background: #f8f9fa; position: relative;">
+            <!-- App Status Bar -->
+            <div style="display: flex; justify-content: space-between; padding: 12px 16px; background: #fff; color: #000; font-size: 12px; font-weight: 600;">
+                <span class="simClockApp">10:00</span>
+                <span><i class="fa-solid fa-signal" style="margin-right: 4px;"></i> <i class="fa-solid fa-wifi" style="margin-right: 4px;"></i> <i class="fa-solid fa-battery-full"></i></span>
+            </div>
+            <!-- App Header -->
+            <div style="background: #fff; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-bottom: 1px solid #eee;">
+                <div style="display: flex; align-items: center;">
+                    <button id="tutBtnTutupHP" onclick="window.closeSimApp()" style="background: none; border: none; font-size: 16px; cursor: pointer; color: #333;"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div style="margin-left: 16px; display: flex; align-items: center; gap: 8px;">
+                        <img id="simAppLogo" src="" alt="" style="width: 24px; height: 24px; border-radius: 4px; mix-blend-mode: multiply;">
+                        <span id="simAppTitle" style="font-weight: 700; font-size: 14px; color: #111;">App Name</span>
+                    </div>
+                </div>
+                <button onclick="window.toggleSimProfile()" style="background: #f1f5f9; width: 32px; height: 32px; border-radius: 50%; border: none; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-user"></i></button>
+            </div>
+            
+            <!-- Profile Overlay -->
+            <div id="simAppProfile" style="display: none; position: absolute; inset: 0; background: #f8f9fa; z-index: 10; flex-direction: column;">
+                <div style="background: #fff; padding: 12px 16px; display: flex; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <button onclick="window.toggleSimProfile()" style="background: none; border: none; font-size: 16px; cursor: pointer; color: #333;"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span style="font-weight: 700; font-size: 14px; color: #111; margin-left: 16px;">Profil Usaha</span>
+                </div>
+                <div style="padding: 24px 16px; flex: 1; display: flex; flex-direction: column; align-items: center;">
+                    <div id="simProfileAvatar" style="width: 72px; height: 72px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; font-weight: bold; margin-bottom: 16px;">M</div>
+                    <div id="simProfileShopName" style="font-size: 18px; font-weight: 800; color: #111; margin-bottom: 4px;">Nama Toko</div>
+                    <div style="font-size: 13px; color: #666; margin-bottom: 24px;">Seller ID: <span id="simProfileSellerId" style="font-family: monospace; font-weight: bold; color: #111;">ID</span></div>
+                    
+                    <div style="width: 100%; background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 16px; text-align: left;">
+                        <div style="font-size: 11px; color: #94a3b8; font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">Status Integrasi Pajak</div>
+                        <div id="simProfileStatus" style="font-size: 13px; font-weight: 700; color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Terhubung dengan Coretax</div>
+                    </div>
+
+                    <div style="width: 100%; background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 16px; text-align: left; margin-top: 12px;">
+                        <div style="font-size: 11px; color: #94a3b8; font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">Status Pemungutan PPh 22</div>
+                        <div id="simProfilePungutan" style="font-size: 13px; font-weight: 700; color: #16a34a;"><i class="fa-solid fa-shield"></i> Bebas (Kumulatif < 500Jt)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- App Body -->
+            <div style="padding: 16px; flex: 1; overflow-y: auto;">
+                <!-- Saldo Card -->
+                <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border-radius: 12px; padding: 20px; margin-bottom: 16px; color: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <div style="font-size: 11px; font-weight: 600; color: #94a3b8; margin-bottom: 4px;">Total Saldo</div>
+                    <div style="font-size: 24px; font-weight: 900; letter-spacing: -0.5px;" id="simAppSaldo">Rp 0</div>
+                </div>
+
+                <!-- Action Button -->
+                <button id="simBtnTambah" onclick="window.simTambahPenjualan()" style="width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 10px; font-weight: 700; font-size: 14px; margin-bottom: 16px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);">
+                    <i class="fa-solid fa-plus"></i> Tambah Penghasilan
+                </button>
+                
+                <div id="simAppMsg" style="display: none; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; margin-bottom: 16px; font-weight: 600;">
+                    <i class="fa-solid fa-circle-info" style="margin-right: 4px;"></i> Akses dibatasi (Menunggu Pemutusan)
+                </div>
+
+                <div style="font-size: 13px; font-weight: 700; margin-bottom: 12px; color: #334155;">Riwayat Transaksi</div>
+                <div id="simAppTxList" style="display: grid; gap: 10px;">
+                    <!-- Tx Items injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Putus Integrasi -->
+    <div id="modalPutusIntegrasi" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+        <div style="background-color: var(--bg-card); width: 400px; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 24px; box-shadow: var(--shadow-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Konfirmasi Putus Integrasi</h3>
+                <button onclick="document.getElementById('modalPutusIntegrasi').style.display='none'" style="background: none; border: none; color: var(--text-muted); cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5;">Apakah Anda yakin ingin memutus integrasi platform ini? Silakan unggah dokumen pernyataan sebagai bukti bahwa toko telah tidak aktif atau dihapus.</p>
+            
+            <form id="formPutusIntegrasi">
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px;">Surat Pernyataan Toko Tidak Aktif/Dihapus <span style="color: var(--nav-coral);">*</span></label>
+                    <input type="file" id="filePutusIntegrasi" required accept=".pdf,.png,.jpg,.jpeg" style="width: 100%; padding: 10px 14px; background-color: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 13px; font-family: var(--font-family);">
+                    <span style="display: block; margin-top: 6px; font-size: 11px; color: var(--text-muted);">Format: PDF/JPG/PNG (Maks 2MB)</span>
+                </div>
+                
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button type="button" onclick="document.getElementById('modalPutusIntegrasi').style.display='none'" style="padding: 8px 16px; background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; font-family: var(--font-family);">Batal</button>
+                    <button type="submit" style="padding: 8px 16px; background: var(--nav-red); border: none; color: #fff; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; font-family: var(--font-family);">Konfirmasi & Putus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/eomzet-engine.js"></script>
+    <script src="js/app.js"></script>
+<script src="js/tutorial.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
